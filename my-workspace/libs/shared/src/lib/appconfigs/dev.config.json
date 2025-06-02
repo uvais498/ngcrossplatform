@@ -1,0 +1,6 @@
+{
+    "environment": "dev",
+    "supabaseUrl":"https://onpdethklugtigfdmqfs.supabase.co",
+    "supabaseKey":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im9ucGRldGhrbHVndGlnZmRtcWZzIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDU4MzczNzUsImV4cCI6MjA2MTQxMzM3NX0.zHb1LImsO8q0NwF-7a6wtrV_uil_zITLNr7NEP2_YMc"
+    
+}
