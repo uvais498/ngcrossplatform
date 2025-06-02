@@ -1,1 +1,88 @@
-/* You can add global styles to this file, and also import other style files */
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+
+@import "../../node_modules/bootstrap/scss/functions";
+@import "../../node_modules/bootstrap/scss/variables";
+
+$custom-colors: (
+    "arabianoud" : #873D1D,
+    "oudelite" : black
+);
+$primary: map-get($custom-colors, "arabianoud");
+
+
+$theme-colors: (
+  "primary": $primary,
+  "danger": $danger
+);
+
+
+
+$theme-colors: map-merge($theme-colors, $custom-colors);
+@each $color, $value in $theme-colors {
+  .btn-hover-#{$color} {
+    &:hover {
+      background-color: darken($value, 10%);
+      border-color: darken($value, 10%);
+    }
+  }
+}
+
+.btn {
+  margin: 5px;
+  padding:10px 40px !important;
+  border-radius: 24px !important;
+  outline: none;
+  font-weight: 600 !important;
+  transition: all 0.2s ease-in-out !important;
+
+  &-primary {
+    background-color: $primary !important;
+    border-color: $primary !important;
+
+    &:hover, &:focus {
+      background-color: darken($primary, 10%) !important;
+      border-color: darken($primary, 10%) !important;
+    }
+
+   
+  }
+
+  &-lg {
+    padding: 0.75rem 2rem !important;
+    font-size: 1.1rem !important;
+  }
+}
+
+
+@import "../../node_modules/bootstrap/scss/bootstrap";
+
+
+
+// :root {
+//   --bs-primary: #873D1D; // default
+// }
+
+// [data-theme="arabianoud"] {
+//   --bs-primary: #873D1D;
+//   --bs-primary-rgb: 135, 61, 29;
+// }
+
+// [data-theme="oudelite"] {
+//   --bs-primary: #000000;
+//   --bs-primary-rgb: 0, 0, 0;
+// }
+
+
+// .btn-primary {
+//   background-color: var(--bs-primary) !important;
+//   border-color: var(--bs-primary) !important;
+//    margin: 5px;
+//   border-radius: 20px !important;
+//   font-weight: 600 !important;
+//   transition: all 0.2s ease-in-out !important;
+//   color: white;
+
+// }
+body {
+  font-family: 'Roboto', sans-serif;
+}
