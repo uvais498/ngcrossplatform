@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { RouterModule } from '@angular/router';
-import { NxWelcomeComponent } from './nx-welcome.component';
 import { Store } from '@ngrx/store';
 import { selectIsAuthenticated } from '@my-workspace/shared';
 import { UserActions, SupabaseclientService } from '@my-workspace/shared';
@@ -9,7 +8,7 @@ import { Observable } from 'rxjs';
 
 
 @Component({
-  imports: [NxWelcomeComponent, RouterModule,CommonModule],
+  imports: [RouterModule,CommonModule],
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss',

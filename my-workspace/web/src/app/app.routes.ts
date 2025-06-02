@@ -1,11 +1,13 @@
 import { Route } from '@angular/router';
 import { AuthenticatedlayoutComponent } from './layouts/authenticatedLayout/authenticatedlayout.component';
 import { LayoutComponent } from './layouts/layout/layout.component';
+import { AuthGuard } from '../core/guards/auth.guard';
 
 export const appRoutes: Route[] = [
      {
         path: '',
         component: AuthenticatedlayoutComponent,
+       canActivate: [AuthGuard],
         children:
          [
             {
@@ -19,6 +21,7 @@ export const appRoutes: Route[] = [
     {
         path: '',
         component: LayoutComponent,
+      //  canActivate: [AuthGuard],
         children: 
         [
             {
