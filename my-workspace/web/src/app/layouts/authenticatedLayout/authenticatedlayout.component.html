@@ -1,1 +1,9 @@
-<router-outlet></router-outlet>
+
+
+<mat-drawer-container class="example-container">
+  <mat-drawer #drawer mode="side" opened (openedChange)="drawerStateChanged($event)" class="mat-elevation-z8 custom-drawer">Drawer content</mat-drawer>
+    <mat-drawer-content>
+        <app-header (toggle)="toggleDrawer()" [drawerOpened]="drawerOpened"></app-header>
+        <router-outlet></router-outlet>
+    </mat-drawer-content>
+</mat-drawer-container>
