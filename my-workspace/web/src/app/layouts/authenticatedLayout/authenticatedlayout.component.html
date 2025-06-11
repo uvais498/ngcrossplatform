@@ -1,7 +1,42 @@
 
 
 <mat-drawer-container class="example-container">
-  <mat-drawer #drawer mode="side" opened (openedChange)="drawerStateChanged($event)" class="mat-elevation-z8 custom-drawer">Drawer content</mat-drawer>
+  <mat-drawer #drawer mode="side" opened (openedChange)="drawerStateChanged($event)" class="custom-drawer">
+    <app-sidebar></app-sidebar>
+<!-- sidebar.component.html -->
+<div class="sidebar" *ngIf="false">
+  <ul class="menu-list">
+    <li *ngFor="let item of menu">
+      <button
+        class="menu-item"
+        (click)="toggle(item)"
+        (keydown.enter)="toggle(item)"
+        (keydown.space)="toggle(item)"
+        [attr.aria-expanded]="item.children ? expanded.has(item) : null"
+        [tabindex]="0"
+        type="button"
+      >
+        <mat-icon class="mat-icon-primary">{{ item.icon }}</mat-icon>
+        {{ item.label }}
+        <mat-icon *ngIf="item.children">
+          {{ expanded.has(item) ? 'expand_less' : 'expand_more' }}
+        </mat-icon>
+      </button>
+
+      <ul class="submenu-list" *ngIf="(item.children && expanded.has(item))">
+        <li *ngFor="let child of item.children" class="submenu-item">
+          <a [routerLink]="child.route">
+            <mat-icon class="mat-icon-oudelite">chevron_right</mat-icon>
+            {{ child.label }}
+          </a>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</div> 
+
+
+  </mat-drawer>
     <mat-drawer-content>
         <app-header (toggle)="toggleDrawer()" [drawerOpened]="drawerOpened"></app-header>
         <router-outlet></router-outlet>

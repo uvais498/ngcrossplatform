@@ -1,23 +1,56 @@
-@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
 
+
+@use "@angular/material" as mat;
+
+$theme: mat.define-theme(
+  (
+    color : (
+      theme-type: light,
+      primary:mat.$azure-palette
+    )
+  )
+);
+
+
+// 1. Fonts
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&family=Poppins:wght@400;600&display=swap');
+
+
+// 2. Bootstrap Functions & Variables
 @import "../../node_modules/bootstrap/scss/functions";
 @import "../../node_modules/bootstrap/scss/variables";
 
+// 3. Custom Variables & Color Maps
 $custom-colors: (
-    "arabianoud" : #873D1D,
-    "oudelite" : black
+  "arabianoud": #873D1D,
+  "oudelite": #000000
 );
 $primary: map-get($custom-colors, "arabianoud");
 
+$primary-50: lighten($primary, 50%);
+$primary-100: lighten($primary, 40%);
+$primary-200: lighten($primary, 30%);
+$primary-300: lighten($primary, 20%);
+$primary-400: lighten($primary, 10%);
+$primary-500: $primary; 
+$primary-600: darken($primary, 5%);
+$primary-700: darken($primary, 10%);
+$primary-800: darken($primary, 15%);
+$primary-900: darken($primary, 20%);
 
-$theme-colors: (
-  "primary": $primary,
-  "danger": $danger
+
+$theme-colors: map-merge(
+  (
+    "primary": $primary,
+    "danger": $danger
+  ),
+  $custom-colors
 );
 
+// 4. Bootstrap Import (must be after variables)
+@import "../../node_modules/bootstrap/scss/bootstrap";
 
-
-$theme-colors: map-merge($theme-colors, $custom-colors);
+// 5. Custom Utility Classes
 @each $color, $value in $theme-colors {
   .btn-hover-#{$color} {
     &:hover {
@@ -25,13 +58,17 @@ $theme-colors: map-merge($theme-colors, $custom-colors);
       border-color: darken($value, 10%);
     }
   }
+
+  .mat-icon-#{$color} {
+    color: $value;
+  }
 }
 
+// 6. Custom Component Styles
 .btn {
   margin: 5px;
-  padding:10px 40px !important;
+  padding: 10px 40px !important;
   border-radius: 24px !important;
-  outline: none;
   font-weight: 600 !important;
   transition: all 0.2s ease-in-out !important;
 
@@ -43,8 +80,6 @@ $theme-colors: map-merge($theme-colors, $custom-colors);
       background-color: darken($primary, 10%) !important;
       border-color: darken($primary, 10%) !important;
     }
-
-   
   }
 
   &-lg {
@@ -53,38 +88,75 @@ $theme-colors: map-merge($theme-colors, $custom-colors);
   }
 }
 
+input.form-control {
+  
+  outline: none;
 
-@import "../../node_modules/bootstrap/scss/bootstrap";
-
-
-
-// :root {
-//   --bs-primary: #873D1D; // default
-// }
-
-// [data-theme="arabianoud"] {
-//   --bs-primary: #873D1D;
-//   --bs-primary-rgb: 135, 61, 29;
-// }
-
-// [data-theme="oudelite"] {
-//   --bs-primary: #000000;
-//   --bs-primary-rgb: 0, 0, 0;
-// }
-
-
-// .btn-primary {
-//   background-color: var(--bs-primary) !important;
-//   border-color: var(--bs-primary) !important;
-//    margin: 5px;
-//   border-radius: 20px !important;
-//   font-weight: 600 !important;
-//   transition: all 0.2s ease-in-out !important;
-//   color: white;
-
-// }
-body {
-  font-family: 'Roboto', sans-serif;
+  &:focus {
+    outline: none;
+    border:none;
+    box-shadow: 0 0 0 0.2rem rgba($primary, 0.25);
+  }
 }
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+select.form-select {
+  border: 1px solid $primary;
+
+  &:focus {
+    border-color: $primary;
+    box-shadow: 0 0 0 0.2rem rgba($primary, 0.25);
+  }
+
+  option {
+    color: black;
+    background-color: white;
+    font-weight: 500;
+    // Note: :hover or :focus won’t work consistently here.
+    &:focus {
+      background-color: $primary;
+    }
+    &:hover {
+      background-color: $primary;
+    }
+  }
+}
+
+select.form-select option {
+    color: black;
+    background-color: white;
+    font-weight: 500;
+     &:focus {
+      background-color: $primary;
+    }
+    &:hover {
+      background-color: $primary !important;
+    }
+}
+
+
+// 7. Typography
+body {
+   font-family: 'Poppins', 'Roboto', sans-serif;
+}
+html, body {
+  height: 100%;
+  margin: 0;
+}
+html{
+  @include mat.core-theme($theme);
+  @include mat.all-component-themes($theme);
+}
+
+.login-title{
+  color: $primary-700;
+  font-weight: 600;
+}
+
+
+.form-field-overrides{
+    @include mat.form-field-overrides((
+    outlined-focus-outline-color: $primary-100,
+    outlined-focus-label-text-color: $primary-700,
+    outlined-label-text-weight:800
+  ));
+}

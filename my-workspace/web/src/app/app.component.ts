@@ -25,7 +25,7 @@ export class AppComponent implements OnInit {
   ngOnInit(): void {
     this.isAuthenticated$ = this.store.select(selectIsAuthenticated);
     console.log(this.isAuthenticated$);
-   this.login();
+   //this.login();
   }
 
   async login() {

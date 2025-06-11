@@ -1,1 +1,35 @@
-<p>login works!</p>
+<div class="container-fluid d-flex justify-content-center align-items-center vh-100">
+  <div class="col-11 col-sm-8 col-md-5 col-lg-4 col-xl-3 p-4 shadow rounded bg-white">
+    <h4 class="text-center mb-4 text-primary">Login</h4>
+    
+    <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+      <mat-form-field appearance="outline" class="w-100 mb-3 form-field-overrides">
+        <mat-label>Email</mat-label>
+        <input matInput formControlName="email" type="email" placeholder="Enter your email" />
+        <mat-error *ngIf="email.invalid && email.touched">Valid email required</mat-error>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline" class="w-100 mb-3 form-field-overrides">
+        <mat-label>Password</mat-label>
+        <input matInput formControlName="password" type="password" placeholder="Enter your password" />
+        <mat-error *ngIf="password.invalid && password.touched">Password is required</mat-error>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline" class="w-100 mb-3 form-field-overrides">
+  <mat-label>Role</mat-label>
+  <mat-select formControlName="role">
+    <mat-option *ngFor="let role of roles" [value]="role.value">
+      {{ role.label }}
+    </mat-option>
+  </mat-select>
+  <mat-error *ngIf="loginForm.get('role')?.invalid && loginForm.get('role')?.touched">
+    Role is required
+  </mat-error>
+</mat-form-field>
+
+
+      <button  class="btn btn-primary" [disabled]="loginForm.invalid">Login</button>
+    </form>
+  </div>
+  
+</div>
