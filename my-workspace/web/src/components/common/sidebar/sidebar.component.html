@@ -1,9 +1,18 @@
-<div class="sidebar p-3 bg-light">
-  <app-sidebaritem
+<div class="sidebar p-3 bg-light d-flex flex-column " style="height: 100vh">
+    <div>
+         <app-sidebaritem
     *ngFor="let item of menu"
     [item]="item"
     [level]="0"
     [selectedRoute]="selectedRoute"
     (itemSelected)="onItemSelected($event)"
   ></app-sidebaritem>
+    </div>
+ <div class="mt-auto">
+    
+    <div class="sidebar-settings-item"> <mat-icon color="primary">
+      settings
+    </mat-icon>Settings</div>
+  </div>
 </div>
+ 
