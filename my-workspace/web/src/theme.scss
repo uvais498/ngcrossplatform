@@ -1,43 +1,12 @@
-@use './palettes.scss';
+@use './palettes.scss' as palattes;
 
 @use '@angular/material' as mat;
 @include mat.core();
 
-$m2-primary: (
-  50: #f6ebe7,
-  100: #e9c8bc,
-  200: #da9f8e,
-  300: #cb745d,
-  400: #bf563b,
-  500: #873d1d,
-  600: #79371a,
-  700: #6a3016,
-  800: #5c2913,
-  900: #431d0b,
-  A100: #ffbfae,
-  A200: #ff947f,
-  A400: #ff684f,
-  A700: #ff4f36,
-  contrast: (
-    50: #000,
-    100: #000,
-    200: #000,
-    300: #000,
-    400: #fff,
-    500: #fff,
-    600: #fff,
-    700: #fff,
-    800: #fff,
-    900: #fff,
-    A100: #000,
-    A200: #000,
-    A400: #fff,
-    A700: #fff
-  )
-);
 
-$myapp-theme-primary: mat.m2-define-palette($m2-primary);
-$myapp-theme-accent: mat.m2-define-palette(mat.$m2-indigo-palette);
+
+$myapp-theme-primary: mat.m2-define-palette(palattes.$m2-primary);
+$myapp-theme-accent: mat.m2-define-palette(palattes.$m2-accent);
 $myapp-theme-warn: mat.m2-define-palette(mat.$m2-red-palette);
 
 $myapp-theme: mat.m2-define-light-theme((
