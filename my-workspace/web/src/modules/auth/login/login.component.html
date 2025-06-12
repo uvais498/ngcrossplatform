@@ -14,21 +14,13 @@
         <input matInput formControlName="password" type="password" placeholder="Enter your password" />
         <mat-error *ngIf="password.invalid && password.touched">Password is required</mat-error>
       </mat-form-field>
-
-      <mat-form-field appearance="outline" class="w-100 mb-3 form-field-overrides">
-  <mat-label>Role</mat-label>
-  <mat-select formControlName="role">
-    <mat-option *ngFor="let role of roles" [value]="role.value">
-      {{ role.label }}
-    </mat-option>
-  </mat-select>
-  <mat-error *ngIf="loginForm.get('role')?.invalid && loginForm.get('role')?.touched">
-    Role is required
-  </mat-error>
-</mat-form-field>
-
-
-      <button  class="btn btn-primary" [disabled]="loginForm.invalid">Login</button>
+      <button
+      class="float-end"
+       mat-raised-button 
+       color="primary" 
+       [disabled]="loginForm.invalid">
+       Login</button>
+      <!--<button  class="btn btn-primary" [disabled]="loginForm.invalid">Login</button> #} -->
     </form>
   </div>
   

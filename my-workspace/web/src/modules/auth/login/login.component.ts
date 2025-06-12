@@ -5,25 +5,33 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
+import { MatButtonModule } from '@angular/material/button';
+import { Observable } from 'rxjs';
+import { selectIsAuthenticated, UserActions } from '@my-workspace/shared';
+import { SupabaseclientService } from '@my-workspace/shared';
+import { Store } from '@ngrx/store';
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-login',
-  imports: [CommonModule,ReactiveFormsModule,MatFormFieldModule,MatInputModule,MatSelectModule ],
+  imports: [CommonModule,ReactiveFormsModule,MatFormFieldModule,MatInputModule,MatSelectModule,MatButtonModule],
   templateUrl: './login.component.html',
   styleUrl: './login.component.css',
 })
 export class LoginComponent {
+  isAuthenticated$!: Observable<boolean>;
   loginForm: FormGroup;
-  roles = [
-  { value: 'admin', label: 'Admin' },
-  { value: 'user', label: 'User' },
-  { value: 'guest', label: 'Guest' }
-];
+  
 
-  constructor(private fb: FormBuilder) {
+  constructor(
+    private fb: FormBuilder,
+    private sbService: SupabaseclientService,
+    private router: Router,
+    private store: Store
+  ) {
+    this.isAuthenticated$ = this.store.select(selectIsAuthenticated);
     this.loginForm = this.fb.group({
       email: ['', [Validators.required, Validators.email]],
-      password: ['', Validators.required],
-      role: ['', Validators.required]
+      password: ['', Validators.required]
     });
   }
 
@@ -37,7 +45,9 @@ export class LoginComponent {
 
   onSubmit() {
     if (this.loginForm.valid) {
-      console.log(this.loginForm.value);
+       this.store.dispatch(UserActions.login(this.loginForm.value));
+      this.isAuthenticated$.subscribe(isAuth => isAuth && this.router.navigate(['/']));
+       
     }
   }
 }

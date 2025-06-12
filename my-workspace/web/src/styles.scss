@@ -1,15 +1,6 @@
 
 
-// @use "@angular/material" as mat;
 
-// $theme: mat.define-theme(
-//   (
-//     color : (
-//       theme-type: light,
-//       primary:mat.$azure-palette
-//     )
-//   )
-// );
 
 
 // 1. Fonts
@@ -153,10 +144,3 @@ html, body {
 }
 
 
-// .form-field-overrides{
-//     @include mat.form-field-overrides((
-//     outlined-focus-outline-color: $primary-100,
-//     outlined-focus-label-text-color: $primary-700,
-//     outlined-label-text-weight:800
-//   ));
-// }

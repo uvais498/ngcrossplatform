@@ -1,0 +1,13 @@
+.sidebar-item {
+  cursor: pointer;
+  transition: background 0.2s;
+
+  &:hover {
+    background: rgba(0, 0, 0, 0.05);
+  }
+
+  .mat-icon {
+    font-size: 20px;
+    vertical-align: middle;
+  }
+}
