@@ -1,15 +1,15 @@
 
 
-@use "@angular/material" as mat;
+// @use "@angular/material" as mat;
 
-$theme: mat.define-theme(
-  (
-    color : (
-      theme-type: light,
-      primary:mat.$azure-palette
-    )
-  )
-);
+// $theme: mat.define-theme(
+//   (
+//     color : (
+//       theme-type: light,
+//       primary:mat.$azure-palette
+//     )
+//   )
+// );
 
 
 // 1. Fonts
@@ -142,10 +142,10 @@ html, body {
   height: 100%;
   margin: 0;
 }
-html{
-  @include mat.core-theme($theme);
-  @include mat.all-component-themes($theme);
-}
+// html{
+//   @include mat.core-theme($theme);
+//   @include mat.all-component-themes($theme);
+// }
 
 .login-title{
   color: $primary-700;
@@ -153,10 +153,10 @@ html{
 }
 
 
-.form-field-overrides{
-    @include mat.form-field-overrides((
-    outlined-focus-outline-color: $primary-100,
-    outlined-focus-label-text-color: $primary-700,
-    outlined-label-text-weight:800
-  ));
-}
+// .form-field-overrides{
+//     @include mat.form-field-overrides((
+//     outlined-focus-outline-color: $primary-100,
+//     outlined-focus-label-text-color: $primary-700,
+//     outlined-label-text-weight:800
+//   ));
+// }
