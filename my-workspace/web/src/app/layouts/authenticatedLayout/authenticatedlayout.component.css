@@ -7,12 +7,9 @@
 
 
 .custom-drawer {
-  width: 260px; 
-  background-color: #f8f9fa; 
-  color: #333;
-  border-right: 3px solid var(--mdc-theme-primary);
+  width: 300px;
+  border-right: 3px solid #dee2e6;
   border-radius: 0;
   box-shadow: 0 0 20px rgba(248, 247, 247, 0.15);
-  padding: 0.5rem;
   transition: all 0.3s ease-in-out;
 }

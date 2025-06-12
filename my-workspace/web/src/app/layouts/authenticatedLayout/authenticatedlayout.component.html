@@ -2,14 +2,15 @@
 
 <mat-drawer-container class="example-container">
   <mat-drawer 
+  class="custom-drawer"
     #drawer 
     mode="side" 
     opened 
     (openedChange)="drawerStateChanged($event)" 
-    class="custom-drawer"
+   
   
   >
-    <app-sidebar />
+    <app-sidebar   class="" />
  
 
 

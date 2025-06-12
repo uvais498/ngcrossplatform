@@ -2,6 +2,8 @@
   <app-sidebaritem
     *ngFor="let item of menu"
     [item]="item"
-    [level]="0">
-  </app-sidebaritem>
+    [level]="0"
+    [selectedRoute]="selectedRoute"
+    (itemSelected)="onItemSelected($event)"
+  ></app-sidebaritem>
 </div>

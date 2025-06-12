@@ -1,9 +1,12 @@
 <div
   class="sidebar-item ps-{{ level * 3 }}"
-  [ngClass]="{ 'has-children': item.children }"
+  [ngClass]="{
+    'has-children': item.children,
+    'active': item.route === selectedRoute
+  }"
 >
   <div
-    class="d-flex justify-content-between align-items-center py-2"
+    class="d-flex justify-content-between align-items-center px-3 py-2"
     (click)="toggle()"
     (keydown.enter)="toggle()"
     (keydown.space)="toggle()"
@@ -12,10 +15,10 @@
     [attr.aria-expanded]="expanded"
   >
     <div>
-      <mat-icon *ngIf="item.icon" class="me-2">{{ item.icon }}</mat-icon>
-      <span>{{ item.label }}</span>
+      <mat-icon color="primary" *ngIf="item.icon">{{ item.icon }}</mat-icon>
+      <span class="mat-body-1">{{ item.label }}</span>
     </div>
-    <mat-icon *ngIf="item.children">
+    <mat-icon color="primary" *ngIf="item.children">
       {{ expanded ? 'expand_less' : 'expand_more' }}
     </mat-icon>
   </div>
@@ -25,6 +28,8 @@
       *ngFor="let child of item.children"
       [item]="child"
       [level]="level + 1"
+      [selectedRoute]="selectedRoute"
+      (itemSelected)="onChildSelect($event)"
     ></app-sidebaritem>
   </div>
 </div>

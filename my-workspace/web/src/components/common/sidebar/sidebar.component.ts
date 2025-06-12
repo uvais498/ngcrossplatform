@@ -19,9 +19,16 @@ import { SidebaritemComponent } from '../sidebaritem/sidebaritem.component';
   styleUrls: ['./sidebar.component.scss'],
 })
 export class SidebarComponent {
-
+selectedRoute = '';
    menu: MenuItem[] = MENU_ITEMS;
    expanded = new Set<any>();
+
+   onItemSelected(route: string) {
+    this.selectedRoute = route;
+    // Optionally navigate:
+    // this.router.navigateByUrl(route);
+  }
+
 
    toggle(item: any) {
     if (this.expanded.has(item)) {

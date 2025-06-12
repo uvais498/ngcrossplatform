@@ -1,13 +1,33 @@
 .sidebar-item {
-  cursor: pointer;
-  transition: background 0.2s;
-
+    padding: 0px 10px ;
+    margin-bottom:12px;
+    border-radius:20px;
+    cursor: pointer;
+    transition: background 0.2s;
+    
   &:hover {
+    font-weight: 600;
+    color:rgb(199, 97, 97);
+    border: 1px solid rgb(206, 211, 206);
     background: rgba(0, 0, 0, 0.05);
   }
 
   .mat-icon {
     font-size: 20px;
+    vertical-align: middle;
+  }
+}
+
+
+.sidebar-item.active {
+  background-color: rgba(25, 118, 210, 0.1); 
+  font-weight: bold;
+  padding-left: 25px;
+  /* border-left : 4px solid #df7f3b;
+  border-right : 4px solid #df7f3b; */
+
+   .mat-icon {
+    font-weight: bold;
     vertical-align: middle;
   }
 }
