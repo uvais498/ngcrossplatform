@@ -14,7 +14,14 @@ export const userReducer = createReducer(
     ...state,
     session: null
   })),
+  on(UserActions.logOut, (state) => ({
+  ...state,
+  user: null,
+  isAuthenticated: false,
+})),
   on(UserActions.login, (state) => ({ ...state, loading: true, error: null })),
   on(UserActions.loginSuccess, (state, { session }) => ({ ...state, session, loading: false })),
   on(UserActions.loginFailure, (state, { error }) => ({ ...state, error, loading: false }))
 );
+
+
