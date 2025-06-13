@@ -10,6 +10,7 @@ import { SkeletonDirective } from '../../../core/directives/skelton.directive';
 import { Store } from '@ngrx/store';
 import { selectIsAuthenticated, UserActions } from '@my-workspace/shared';
 import { Observable } from 'rxjs';
+import { ConfirmdialogService } from '../../../core/services/confirmdialog.service';
 
 @Component({
   selector: 'app-sidebar',
@@ -34,6 +35,7 @@ isLoading = true;
 
    constructor(private store: Store,
     private router: Router,
+    private confirmDialog: ConfirmdialogService
    ){
 
    }
@@ -60,13 +62,28 @@ isLoading = true;
   }
 
   logout() {
-    debugger
-  this.store.dispatch(UserActions.logOut());
+    this.logoutR();
+}
+  logoutR(){
+    this.confirmDialog.confirmWithAsyncCallbacks({
+      title: 'Log Out?',
+    message: 'This action cannot be undone.',
+    confirmText: 'Yes',
+    cancelText: 'Cancel',
+    disableCloseDuringAsync: true
+    },
+    async () => {
+    this.store.dispatch(UserActions.logOut());
    this.isAuthenticated$.subscribe(isAuth => isAuth && this.router.navigate(['/']));
+    console.log('Deleted!');
+  },
+  async () => {
+    console.log('Cancelled');
+  }
+  )
+  
 }
 }
-
-
 
 export interface MenuItem {
   label?: string;
