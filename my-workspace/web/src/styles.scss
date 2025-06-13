@@ -1,5 +1,5 @@
 
-
+@use '@angular/material' as mat;
 
 
 
@@ -144,6 +144,29 @@ html, body {
 }
 
 
-h1,h2,h3,h4,h5,h6{
-  color: $primary;
+h1 h2 h3 h4 h5 h6{
+color: $primary-500;
+}
+
+.snackbar-success {
+  
+  @include mat.snack-bar-overrides((
+    button-color: white,
+    container-color: rgb(157, 194, 157),
+  ));
+}
+
+.snackbar-error {
+  background-color: #f44336;
+  color: white;
+}
+
+.snackbar-info {
+  background-color: #2196f3;
+  color: white;
+}
+
+.snackbar-warn {
+  background-color: #ff9800;
+  color: black;
 }

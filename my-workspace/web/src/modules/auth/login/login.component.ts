@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
@@ -11,6 +11,7 @@ import { selectIsAuthenticated, UserActions } from '@my-workspace/shared';
 import { SupabaseclientService } from '@my-workspace/shared';
 import { Store } from '@ngrx/store';
 import { Router } from '@angular/router';
+import { SnackbarnotifyService } from '../../../core/services/snackbarnotify/snackbarnotify.service';
 @Component({
   selector: 'app-login',
   imports: [CommonModule,ReactiveFormsModule,MatFormFieldModule,MatInputModule,MatSelectModule,MatButtonModule],
@@ -24,7 +25,7 @@ export class LoginComponent {
 
   constructor(
     private fb: FormBuilder,
-    private sbService: SupabaseclientService,
+    private notifyService: SnackbarnotifyService,
     private router: Router,
     private store: Store
   ) {
@@ -47,7 +48,12 @@ export class LoginComponent {
     if (this.loginForm.valid) {
        this.store.dispatch(UserActions.login(this.loginForm.value));
       this.isAuthenticated$.subscribe(isAuth => isAuth && this.router.navigate(['/']));
-       
+       this.notifyLogin();
     }
+  }
+
+  notifyLogin(){
+    
+      this.notifyService.success("Logged In");
   }
 }
