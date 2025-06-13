@@ -1,10 +1,12 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MENU_ITEMS } from '../../../core/navigation/routerlinks';
 import { MatListModule } from '@angular/material/list';
 import { MatIconModule } from '@angular/material/icon';
 import { RouterModule } from '@angular/router';
+import {MatMenuModule} from '@angular/material/menu';
 import { SidebaritemComponent } from '../sidebaritem/sidebaritem.component';
+import { SkeletonDirective } from '../../../core/directives/skelton.directive';
 
 @Component({
   selector: 'app-sidebar',
@@ -13,16 +15,25 @@ import { SidebaritemComponent } from '../sidebaritem/sidebaritem.component';
     MatListModule,
     MatIconModule,
     RouterModule,
-    SidebaritemComponent
+    MatMenuModule,
+    SidebaritemComponent,
+    SkeletonDirective
   ],
   templateUrl: './sidebar.component.html',
   styleUrls: ['./sidebar.component.scss'],
 })
-export class SidebarComponent {
+export class SidebarComponent implements OnInit {
 selectedRoute = '';
+isLoading = true;
    menu: MenuItem[] = MENU_ITEMS;
    expanded = new Set<any>();
 
+
+   ngOnInit(): void {
+    setTimeout(() => {
+      this.isLoading = false;
+    }, 2000); 
+  }
    onItemSelected(route: string) {
     this.selectedRoute = route;
     // Optionally navigate:
