@@ -1,1 +1,14 @@
-<p>confirmdialog works!</p>
+<h2 mat-dialog-title color="primary">{{ data.title }}</h2>
+
+<mat-dialog-content color="primary">{{ data.message }}</mat-dialog-content>
+
+<mat-dialog-actions align="end">
+  <button mat-raised-button  color="primary" [disabled]="loading" (click)="onCancel()">
+    {{ data.cancelText || 'Cancel' }}
+  </button>
+
+  <button mat-stroked-button color="primary" [disabled]="loading" (click)="onConfirm()">
+    <mat-spinner *ngIf="loading" diameter="20"></mat-spinner>
+    <span *ngIf="!loading">{{ data.confirmText || 'Confirm' }}</span>
+  </button>
+</mat-dialog-actions>

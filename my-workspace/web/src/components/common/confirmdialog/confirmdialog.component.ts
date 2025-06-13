@@ -2,22 +2,14 @@ import { Component, Inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MAT_DIALOG_DATA, MatDialogRef, MatDialogModule } from '@angular/material/dialog';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner'
+import { MatButtonModule } from '@angular/material/button';
+
 
 @Component({
   selector: 'app-confirmdialog',
-  imports: [CommonModule, MatDialogModule,MatProgressSpinnerModule],
+  imports: [CommonModule, MatDialogModule,MatProgressSpinnerModule,MatButtonModule],
   standalone: true,
-  template: `<h2 mat-dialog-title>{{ data.title }}</h2>
-    <mat-dialog-content>{{ data.message }}</mat-dialog-content>
-    <mat-dialog-actions align="end">
-      <button mat-button [disabled]="loading" (click)="onCancel()">
-        {{ data.cancelText || 'Cancel' }}
-      </button>
-      <button mat-raised-button color="primary" [disabled]="loading" (click)="onConfirm()">
-        <mat-spinner *ngIf="loading" diameter="20"></mat-spinner>
-        <span *ngIf="!loading">{{ data.confirmText || 'Confirm' }}</span>
-      </button>
-    </mat-dialog-actions>`,
+  templateUrl: './confirmdialog.component.html',
   styleUrl: './confirmdialog.component.css',
 })
 
