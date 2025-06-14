@@ -8,8 +8,11 @@ import {
   UserEffects,
   EnumReducer,
   EnumEffects,
-  USER_FEATURE_KEY,
-  ENUM_FEATURE_KEY
+  TaxonomyReducer,
+  TaxonomyEffects,
+  USER_FEATURE_KEY, 
+  ENUM_FEATURE_KEY,
+  TAXONOMY_FEATURE_KEY
 } from '@my-workspace/shared';
 import { provideStoreDevtools } from '@ngrx/store-devtools';
 import { provideEffects } from '@ngrx/effects';
@@ -32,10 +35,11 @@ export const appConfig: ApplicationConfig = {
       {
         [USER_FEATURE_KEY]: userReducer,
         [ENUM_FEATURE_KEY]: EnumReducer,
+        [TAXONOMY_FEATURE_KEY] : TaxonomyReducer 
       },
       { metaReducers }
     ),
-    provideEffects(UserEffects, EnumEffects),
+    provideEffects(UserEffects, EnumEffects,TaxonomyEffects),
     provideStoreDevtools(),
   ],
 };

@@ -44,7 +44,7 @@ isLoading = true;
     this.isAuthenticated$ = this.store.select(selectIsAuthenticated);
     setTimeout(() => {
       this.isLoading = false;
-    }, 2000); 
+    }, 600); 
   }
    onItemSelected(route: string) {
     this.selectedRoute = route;

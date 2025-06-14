@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { Store } from '@ngrx/store';
-import { EnumActions, selectEnumValues, selectIsAuthenticated } from '@my-workspace/shared';
+import { EnumActions, EnumName, selectEnumValues, selectIsAuthenticated, TaxonomyActions, TaxonomyService } from '@my-workspace/shared';
 import { UserActions, SupabaseclientService } from '@my-workspace/shared';
 import { CommonModule } from '@angular/common';
 import { Observable } from 'rxjs';
@@ -19,18 +19,29 @@ export class AppComponent implements OnInit {
   enumValues$!:Observable<string[]>;
   constructor(
     private s: SupabaseclientService,
+    private taxonomyService : TaxonomyService,
     
     private store: Store
   ) {}
 
   ngOnInit(): void {
-    this.store.dispatch(EnumActions.loadEnum({ enumName: 'taxonomytype' }));
-    this.isAuthenticated$ = this.store.select(selectIsAuthenticated);
-    this.enumValues$ = this.store.select(selectEnumValues('taxonomytype'));
-    console.log(this.enumValues$.subscribe(d => d && console.log(d)));
+    this.loadEnums();
+    // this.isAuthenticated$ = this.store.select(selectIsAuthenticated);
+    // this.enumValues$ = this.store.select(selectEnumValues('taxonomytype'));
+    // console.log(this.enumValues$.subscribe(d => d && console.log(d)));
    
   }
 
+  loadEnums(){
+    this.taxonomyService.getTaxonmy().then(console.log).catch(console.error);
+    this.store.dispatch(TaxonomyActions.loadTaxonomy());
+    const enumsToLoad : EnumName[]  = ['taxonomytype', 'localecodes'] ;
+    enumsToLoad.forEach(enumName => {
+      this.store.dispatch(EnumActions.loadEnum({ enumName }));
+    });
+    
 
+
+  }
 
 }

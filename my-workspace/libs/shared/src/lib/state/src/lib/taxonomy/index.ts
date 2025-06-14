@@ -1,0 +1,5 @@
+export * from './taxonomy.actions'
+export * from './taxonomy.reducers'
+export * from './taxonomy.selectors'
+export * from './taxonomy.model'
+export * from './taxonomy.effects'
