@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { Store } from '@ngrx/store';
-import { selectIsAuthenticated } from '@my-workspace/shared';
+import { EnumActions, selectEnumValues, selectIsAuthenticated } from '@my-workspace/shared';
 import { UserActions, SupabaseclientService } from '@my-workspace/shared';
 import { CommonModule } from '@angular/common';
 import { Observable } from 'rxjs';
@@ -16,6 +16,7 @@ import { Observable } from 'rxjs';
 export class AppComponent implements OnInit {
   title = 'web';
   isAuthenticated$!: Observable<boolean>;
+  enumValues$!:Observable<string[]>;
   constructor(
     private s: SupabaseclientService,
     
@@ -23,18 +24,13 @@ export class AppComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
+    this.store.dispatch(EnumActions.loadEnum({ enumName: 'taxonomytype' }));
     this.isAuthenticated$ = this.store.select(selectIsAuthenticated);
-    console.log(this.isAuthenticated$);
-   //this.login();
+    this.enumValues$ = this.store.select(selectEnumValues('taxonomytype'));
+    console.log(this.enumValues$.subscribe(d => d && console.log(d)));
+   
   }
 
-  async login() {
-    this.store.dispatch(UserActions.login({
-    email: 'muhammed.uvais@outlook.com',
-    password: 'Najmu@2122'
-  }));
 
-
-  }
 
 }

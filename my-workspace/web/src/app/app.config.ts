@@ -1,16 +1,23 @@
 import { ApplicationConfig, provideZoneChangeDetection } from '@angular/core';
 import { provideRouter } from '@angular/router';
 import { appRoutes } from './app.routes';
-import { provideStore,MetaReducer  } from '@ngrx/store';
+import { provideStore, MetaReducer } from '@ngrx/store';
 import { localStorageSync } from 'ngrx-store-localstorage';
-import { userReducer,UserEffects } from '@my-workspace/shared';
-import { USER_FEATURE_KEY } from '@my-workspace/shared';
+import {
+  userReducer,
+  UserEffects,
+  EnumReducer,
+  EnumEffects,
+  USER_FEATURE_KEY,
+  ENUM_FEATURE_KEY
+} from '@my-workspace/shared';
 import { provideStoreDevtools } from '@ngrx/store-devtools';
 import { provideEffects } from '@ngrx/effects';
 
+
 export function localStorageSyncReducer(reducer: any): any {
   return localStorageSync({
-    keys: ['user'], 
+    keys: ['user', 'enum'],
     rehydrate: true,
   })(reducer);
 }
@@ -22,10 +29,13 @@ export const appConfig: ApplicationConfig = {
     provideZoneChangeDetection({ eventCoalescing: true }),
     provideRouter(appRoutes),
     provideStore(
-      { [USER_FEATURE_KEY]: userReducer },
+      {
+        [USER_FEATURE_KEY]: userReducer,
+        [ENUM_FEATURE_KEY]: EnumReducer,
+      },
       { metaReducers }
     ),
-    provideEffects(UserEffects),
+    provideEffects(UserEffects, EnumEffects),
     provideStoreDevtools(),
-],
+  ],
 };
