@@ -1,5 +1,5 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { TaxonomyComponent } from './taxonomy.component';
+import { TaxonomyComponent } from '../../taxonomy.component';
 
 describe('TaxonomyComponent', () => {
   let component: TaxonomyComponent;

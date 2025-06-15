@@ -11,7 +11,7 @@ export const MENU_ITEMS = [
         {
           label: 'Electronics',
           children: [
-            { label: 'Phones', icon: 'dashboard',route: '/products/electronics/phones' },
+            { label: 'Taxonomy',route: '/taxonomy' },
             { label: 'Laptops', route: '/products/electronics/laptops' }
           ]
         },
