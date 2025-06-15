@@ -48,8 +48,7 @@ isLoading = true;
   }
    onItemSelected(route: string) {
     this.selectedRoute = route;
-    // Optionally navigate:
-    // this.router.navigateByUrl(route);
+    this.router.navigateByUrl(route);
   }
 
 

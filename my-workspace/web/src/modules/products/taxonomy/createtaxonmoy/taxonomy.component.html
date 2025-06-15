@@ -43,7 +43,7 @@
     </div>
 
     <div class="col-md-6">
-      <mat-checkbox formControlName="isactive">Is Active</mat-checkbox>
+      <mat-checkbox color="primary" formControlName="isactive">Is Active</mat-checkbox>
     </div>
 
     <div class="col-md-12">
@@ -65,7 +65,7 @@
 
   <hr class="my-4" />
 
-  <div class="table-responsive">
+  <div class="table-responsive" *ngIf="false">
     <table mat-table [dataSource]="taxonomies" class="mat-elevation-z1 w-100">
       <ng-container matColumnDef="name">
         <th mat-header-cell *matHeaderCellDef>Name</th>
