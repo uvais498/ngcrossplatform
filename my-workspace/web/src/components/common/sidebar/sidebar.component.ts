@@ -73,8 +73,7 @@ isLoading = true;
     },
     async () => {
     this.store.dispatch(UserActions.logOut());
-   this.isAuthenticated$.subscribe(isAuth => isAuth && this.router.navigate(['/']));
-    console.log('Deleted!');
+    this.isAuthenticated$.subscribe(isAuth => isAuth && this.router.navigate(['/']));
   },
   async () => {
     console.log('Cancelled');

@@ -18,3 +18,10 @@ $myapp-theme: mat.m2-define-light-theme((
 ));
 
 @include mat.all-component-themes($myapp-theme);
+
+.white-spinner{
+
+  @include mat.progress-spinner-overrides((
+   // active-indicator-color: rgba(214, 212, 212, 0.918) ,
+  ));
+}

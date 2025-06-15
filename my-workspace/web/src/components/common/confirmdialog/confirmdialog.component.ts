@@ -21,13 +21,25 @@ export class ConfirmdialogComponent {
   ) {}
 
   onConfirm(): void {
-    this.dialogRef.close(true);
+    if (this.data.disableCloseDuringAsync) {
+      this.loading = true;
+      setInterval(() => {
+         this.dialogRef.close(true)
+      }
+      ,1100)
+    }
+    else{
+      this.dialogRef.close(true)
+    }
   }
 
   onCancel(): void {
     this.dialogRef.close(false);
   }
+
 }
+
+
 
 
 export interface ConfirmDialogData {

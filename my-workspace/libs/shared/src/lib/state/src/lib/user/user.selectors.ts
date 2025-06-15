@@ -18,3 +18,8 @@ export const selectIsAuthenticated = createSelector(
   selectSession,
   (session) => !!session?.access_token
 );
+
+export const selectLoading = createSelector(
+  selectUserState,
+  (state) => state.loading
+);

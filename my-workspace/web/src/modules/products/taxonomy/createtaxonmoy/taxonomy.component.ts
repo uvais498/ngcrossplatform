@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { Taxonomy } from '@my-workspace/shared';
@@ -23,7 +23,10 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
   templateUrl: './taxonomy.component.html',
   styleUrl: './taxonomy.component.css',
 })
-export class TaxonomyComponent {
+export class TaxonomyComponent implements OnInit {
+   @Input() data?: Taxonomy;
+   @Output() submitForm = new EventEmitter<Taxonomy>();
+  @Output() cancel = new EventEmitter<void>();
 taxonomyForm: FormGroup;
   taxonomies: Taxonomy[] = [];
   editingId: string | null = null;
@@ -41,19 +44,20 @@ taxonomyForm: FormGroup;
       parentid: [null],
     });
   }
+
+  ngOnInit() {
+    if (this.data) {
+      this.taxonomyForm.patchValue(this.data);
+    }
+  }
   onSubmit(){
-    console.log()
+   if (this.taxonomyForm.valid) {
+      this.submitForm.emit(this.taxonomyForm.value);
+    }
   }
 
-  cancelEdit(){
-     console.log()
-  }
-
-  edit(element: any){
-     console.log()
-  }
-  delete(element: any){
-    console.log()
+  onCancel() {
+    this.cancel.emit();
   }
 }
 

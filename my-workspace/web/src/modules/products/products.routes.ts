@@ -1,7 +1,6 @@
 import { Route } from "@angular/router";
 import { ProductlistComponent } from "./productlist/productlist.component";
-import { TaxonomyComponent } from "./taxonomy/createtaxonmoy/taxonomy.component";
-
+import { TaxonomylayoutComponent } from "./taxonomy/taxonomylayout/taxonomylayout.component";
 export const productsRoutes: Route[] = [
     {
         path: '',
@@ -9,6 +8,6 @@ export const productsRoutes: Route[] = [
     },
     {
         path : 'taxonomy',
-        component: TaxonomyComponent
+        component: TaxonomylayoutComponent
     }
 ];
