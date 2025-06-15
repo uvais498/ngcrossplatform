@@ -57,8 +57,15 @@
       <button mat-raised-button color="primary" type="submit">
         {{ editingId ? 'Update' : 'Add' }}
       </button>
-     
+     <app-button 
+     [variant]="'stroked'"
+     [text]="'Login'"
+    [color]="'primary'"
+    [class]="'float-end'"
+    [fullWidth]="false"
+    [buttontype]="'submit'" />
     </div>
+
   </form>
 
 </div>

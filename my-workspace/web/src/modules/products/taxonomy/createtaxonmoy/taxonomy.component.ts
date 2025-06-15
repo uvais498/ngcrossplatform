@@ -9,10 +9,11 @@ import { MatCheckboxModule }   from '@angular/material/checkbox';
 import { MatTableModule }      from '@angular/material/table';
 import { MatIconModule }       from '@angular/material/icon';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { ButtonComponent } from '../../../../components/common/button/button.component';
 
 @Component({
   selector: 'app-taxonomy',
-  imports: [CommonModule, MatFormFieldModule,FormsModule,
+  imports: [CommonModule, MatFormFieldModule,FormsModule,ButtonComponent,
     ReactiveFormsModule,
     MatInputModule,
     MatButtonModule,

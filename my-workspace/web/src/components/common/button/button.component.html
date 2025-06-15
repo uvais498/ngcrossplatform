@@ -1,0 +1,142 @@
+<ng-container [ngSwitch]="variant">
+  <button
+    *ngSwitchCase="'flat'"
+    mat-flat-button
+    [color]="color"
+    [type]="buttontype"
+    [disabled]="disabled || loading"
+    [ngClass]="[
+      'd-flex',
+      'align-items-center',
+      'justify-content-center',
+      'gap-2',
+      fullWidth ? 'w-100' : '',
+      class
+    ]"
+    (click)="onClick()"
+  >
+    <mat-spinner *ngIf="loading" diameter="20" strokeWidth="3" [color]="color"></mat-spinner>
+    <span *ngIf="!loading">{{ text }}</span>
+  </button>
+
+  <button
+    *ngSwitchCase="'stroked'"
+    mat-stroked-button
+    [color]="color"
+    [type]="buttontype"
+    [disabled]="disabled || loading"
+    [ngClass]="[
+      'd-flex',
+      'align-items-center',
+      'justify-content-center',
+      'gap-2',
+      fullWidth ? 'w-100' : '',
+      class
+    ]"
+    (click)="onClick()"
+  >
+    <mat-spinner *ngIf="loading" diameter="20" strokeWidth="3" [color]="color"></mat-spinner>
+    <span *ngIf="!loading">{{ text }}</span>
+  </button>
+
+  <button
+    *ngSwitchCase="'basic'"
+    mat-button
+    [color]="color"
+    [type]="buttontype"
+    [disabled]="disabled || loading"
+    [ngClass]="[
+      'd-flex',
+      'align-items-center',
+      'justify-content-center',
+      'gap-2',
+      fullWidth ? 'w-100' : '',
+      class
+    ]"
+    (click)="onClick()"
+  >
+    <mat-spinner *ngIf="loading" diameter="20" strokeWidth="3" [color]="color"></mat-spinner>
+    <span *ngIf="!loading">{{ text }}</span>
+  </button>
+
+  <button
+    *ngSwitchCase="'icon'"
+    mat-icon-button
+    [color]="color"
+    [type]="buttontype"
+    [disabled]="disabled || loading"
+    [ngClass]="[
+      'd-flex',
+      'align-items-center',
+      'justify-content-center',
+      'gap-2',
+      fullWidth ? 'w-100' : '',
+      class
+    ]"
+    (click)="onClick()"
+  >
+    <mat-spinner *ngIf="loading" diameter="20" strokeWidth="3" [color]="color"></mat-spinner>
+    <span *ngIf="!loading">{{ text }}</span>
+  </button>
+
+  <button
+    *ngSwitchCase="'fab'"
+    mat-fab
+    [color]="color"
+    [type]="buttontype"
+    [disabled]="disabled || loading"
+    [ngClass]="[
+      'd-flex',
+      'align-items-center',
+      'justify-content-center',
+      'gap-2',
+      fullWidth ? 'w-100' : '',
+      class
+    ]"
+    (click)="onClick()"
+  >
+    <mat-spinner *ngIf="loading" diameter="20" strokeWidth="3" [color]="color"></mat-spinner>
+    <span *ngIf="!loading">{{ text }}</span>
+  </button>
+
+  <button
+    *ngSwitchCase="'mini-fab'"
+    mat-mini-fab
+    [color]="color"
+    [type]="buttontype"
+    [disabled]="disabled || loading"
+    [ngClass]="[
+      'd-flex',
+      'align-items-center',
+      'justify-content-center',
+      'gap-2',
+      fullWidth ? 'w-100' : '',
+      class
+    ]"
+    (click)="onClick()"
+  >
+    <mat-spinner *ngIf="loading" diameter="20" strokeWidth="3" [color]="color"></mat-spinner>
+    <span *ngIf="!loading">{{ text }}</span>
+  </button>
+
+  <!-- Default to raised -->
+  <button
+    *ngSwitchDefault
+    mat-raised-button
+    [color]="color"
+    [type]="buttontype"
+    [disabled]="disabled || loading"
+    [ngClass]="[
+      'd-flex',
+      'align-items-center',
+      'justify-content-center',
+      'gap-2',
+      fullWidth ? 'w-100' : '',
+      class
+    ]"
+    (click)="onClick()"
+  >
+    <mat-spinner *ngIf="loading" diameter="20" strokeWidth="3" [color]="color"></mat-spinner>
+    <span *ngIf="!loading">{{ text }}</span>
+  </button>
+</ng-container>
