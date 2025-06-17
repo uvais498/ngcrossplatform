@@ -10,27 +10,28 @@ export const selectTaxonomyItems = createSelector(
 );
 
 // Nested tree selector
-export interface TaxonomyNode {
-  id: string;
-  name: string;
-  children?: TaxonomyNode[];
+export interface TaxonomyNode extends Taxonomy {
+  
+  children?: Taxonomy[];
 }
 
 export const selectTaxonomyTree = createSelector(
   selectTaxonomyItems,
   (items: Taxonomy[]): TaxonomyNode[] => {
     const map = new Map<string, TaxonomyNode>();
+
+    // Step 1: Clone each taxonomy item as a node with an empty children array
     items.forEach(item => {
-      map.set(item.id, { id: item.id, name: item.name, children: [] });
+      map.set(item.id, { ...item, children: [] });
     });
 
     const tree: TaxonomyNode[] = [];
 
+    // Step 2: Assign each node to its parent or as a root
     items.forEach(item => {
       const node = map.get(item.id)!;
-      if (item.parentid) {
-        const parent = map.get(item.parentid);
-        if (parent) parent.children!.push(node);
+      if (item.parentid && map.has(item.parentid)) {
+        map.get(item.parentid)!.children!.push(node);
       } else if (item.taxonomytype === 'MAIN') {
         tree.push(node);
       }

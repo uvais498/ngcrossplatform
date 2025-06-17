@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { Store } from '@ngrx/store';
-import { EnumActions, EnumName, selectEnumValues, selectIsAuthenticated, TaxonomyActions, TaxonomyService } from '@my-workspace/shared';
+import { EnumActions, EnumName, selectEnumValues,selectTaxonomyTree, selectIsAuthenticated, TaxonomyActions, TaxonomyService } from '@my-workspace/shared';
 import { UserActions, SupabaseclientService } from '@my-workspace/shared';
 import { CommonModule } from '@angular/common';
 import { Observable } from 'rxjs';
@@ -17,6 +17,7 @@ export class AppComponent implements OnInit {
   title = 'web';
   isAuthenticated$!: Observable<boolean>;
   enumValues$!:Observable<string[]>;
+  TValues$!:Observable<any[]>;
   constructor(
     private s: SupabaseclientService,
     private taxonomyService : TaxonomyService,
@@ -28,7 +29,8 @@ export class AppComponent implements OnInit {
     this.loadEnums();
     // this.isAuthenticated$ = this.store.select(selectIsAuthenticated);
     // this.enumValues$ = this.store.select(selectEnumValues('taxonomytype'));
-    // console.log(this.enumValues$.subscribe(d => d && console.log(d)));
+     this.TValues$ = this.store.select(selectTaxonomyTree);
+    // console.log(this.TValues$.subscribe(d => d && console.log(d)));
    
   }
 

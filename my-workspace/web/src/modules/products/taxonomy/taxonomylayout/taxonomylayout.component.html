@@ -1,2 +1,32 @@
-<p >taxonomylayout works!</p>
-<button (click)="openTaxonomyDialog()">yg</button>
+
+
+<div class="p-2  d-flex flex-column h-100">
+
+    <div class="row">
+        <div class="col-sm-12 card shadow-sm p-2">
+            <div class="d-flex flex-wrap align-items-center justify-content-between gap-1">
+                <app-button
+                    text="Add"
+                    color="primary"
+                    variant="stroked"
+                    [class]="'mb-4'"
+                    (clicked)="openTaxonomyDialog()"
+                />
+                <div class="float-right">
+                    <ng-container *ngIf="showLocaleSelector">
+                    <app-localeselector
+                        [selectedLocale]="selectedLocale"
+                        (localeChanged)="onLocaleChanged($event)">
+                    </app-localeselector>
+                </ng-container>
+                </div>
+            </div>
+        </div>
+      
+    </div>
+
+<div class="row flex-grow-1 border-9" style="height:900px"></div>
+
+   <div></div>
+
+</div>

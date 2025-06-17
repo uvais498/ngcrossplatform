@@ -22,11 +22,17 @@
     </div>
 
     <div class="col-md-6">
-      <mat-form-field appearance="outline" class="w-100">
-        <mat-label>Taxonomy Type</mat-label>
-        <input matInput formControlName="taxonomytype" required />
-      </mat-form-field>
-    </div>
+  <mat-form-field appearance="outline" class="w-100">
+    <mat-label>Taxonomy Type</mat-label>
+    <mat-select formControlName="taxonomytype" required>
+      <mat-option *ngFor="let type of enumValues$ | async" [value]="type">
+        {{ type }}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+</div>
+
+
 
     <div class="col-md-6">
       <mat-form-field appearance="outline" class="w-100">
@@ -54,16 +60,14 @@
     </div>
 
     <div class="col-12">
-      <button mat-raised-button color="primary" type="submit">
-        {{ editingId ? 'Update' : 'Add' }}
-      </button>
-     <app-button 
-     [variant]="'stroked'"
-     [text]="'Login'"
-    [color]="'primary'"
-    [class]="'float-end'"
-    [fullWidth]="false"
-    [buttontype]="'submit'" />
+     <app-button
+        [text]="editingId ? 'Update' : 'Add'"
+        color="primary"
+        variant="raised"
+        buttontype="submit"
+        [class]="'mb-4'"
+      />
+
     </div>
 
   </form>

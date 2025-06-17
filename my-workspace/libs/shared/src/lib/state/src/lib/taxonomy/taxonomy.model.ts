@@ -28,3 +28,10 @@ export const initialTaxonomyState: TaxonomyState = {
   loading: false,
   error: null,
 };
+
+
+export interface TaxonomyDialogData {
+  locale:  string;
+  data?: Taxonomy | null;
+  
+}
