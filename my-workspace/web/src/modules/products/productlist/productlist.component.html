@@ -1,1 +1,14 @@
 <p>productlist works!</p>
+
+<form [formGroup]="form" class="row">
+
+<app-input 
+class="col-sm-3"
+ LabelName="Email"
+ [Type]="'email'"
+ [Placeholder]="'Enter your Email'"
+ [FormControl]="form.controls.email"
+ [CustomErrorMessage]="'Please enter a valid email address'"
+(ValueChange)="onEmailChange($event)"
+ />
+</form>

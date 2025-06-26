@@ -1,0 +1,17 @@
+<mat-form-field appearance="outline" class="w-100 mb-3 form-field-overrides">
+  @if (LabelName()) {
+    <mat-label>{{ LabelName() }}</mat-label>
+  }
+
+  <input
+    matInput
+    [type]="Type()"
+    [formControl]="FormControl()!"
+    [placeholder]="Placeholder()"
+    [ngClass]="{ 'is-invalid': ErrorMessage() }"
+  />
+
+  <mat-error>
+    {{ ErrorMessage() }}
+  </mat-error>
+</mat-form-field>

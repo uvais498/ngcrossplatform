@@ -6,11 +6,12 @@ import { ComponentdialogComponent } from '../../../../components/common/componen
 import { TaxonomyComponent } from '../createtaxonmoy/taxonomy.component';
 import { LocaleselectorComponent } from '../../../../components/common/localeselector/localeselector.component';
 import { ButtonComponent } from "../../../../components/common/button/button.component";
+import { TreeDynamicExample } from "../../../../components/common/tree/tree.component";
 
 
 @Component({
   selector: 'app-taxonomylayout',
-  imports: [CommonModule, MatDialogModule, LocaleselectorComponent, ButtonComponent],
+  imports: [CommonModule, MatDialogModule, LocaleselectorComponent, ButtonComponent, TreeDynamicExample],
   templateUrl: './taxonomylayout.component.html',
   styleUrl: './taxonomylayout.component.css',
 })

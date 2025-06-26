@@ -1,6 +1,6 @@
 import { Component, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
@@ -13,9 +13,10 @@ import { SupabaseclientService } from '@my-workspace/shared';
 import { Store } from '@ngrx/store';
 import { Router } from '@angular/router';
 import { SnackbarnotifyService } from '../../../core/services/snackbarnotify/snackbarnotify.service';
+import { InputComponent } from "../../../components/common/input.component";
 @Component({
   selector: 'app-login',
-  imports: [CommonModule,ReactiveFormsModule,MatFormFieldModule,MatInputModule,MatSelectModule,MatButtonModule,MatProgressSpinnerModule],
+  imports: [CommonModule, ReactiveFormsModule, MatFormFieldModule, MatInputModule, MatSelectModule, MatButtonModule, MatProgressSpinnerModule, InputComponent],
   templateUrl: './login.component.html',
   styleUrl: './login.component.css',
 })
@@ -34,18 +35,15 @@ export class LoginComponent {
     this.loading$ = this.store.select(selectLoading);
     this.isAuthenticated$ = this.store.select(selectIsAuthenticated);
     this.loginForm = this.fb.group({
-      email: ['', [Validators.required, Validators.email]],
-      password: ['', Validators.required]
+      email: new FormControl('', [Validators.required, Validators.email]),
+      password: new FormControl('', Validators.required)
     });
   }
 
-  get email() {
-    return this.loginForm.get('email')!;
-  }
+ getControl(name: string): FormControl {
+  return this.loginForm.get(name) as FormControl;
+}
 
-  get password() {
-    return this.loginForm.get('password')!;
-  }
 
   onSubmit() {
     if (this.loginForm.valid) {

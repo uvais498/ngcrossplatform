@@ -30,7 +30,7 @@ export class AppComponent implements OnInit {
     // this.isAuthenticated$ = this.store.select(selectIsAuthenticated);
     // this.enumValues$ = this.store.select(selectEnumValues('taxonomytype'));
      this.TValues$ = this.store.select(selectTaxonomyTree);
-    // console.log(this.TValues$.subscribe(d => d && console.log(d)));
+    console.log(this.TValues$.subscribe(d => d && console.log(d)));
    
   }
 
