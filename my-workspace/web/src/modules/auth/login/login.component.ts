@@ -13,7 +13,7 @@ import { SupabaseclientService } from '@my-workspace/shared';
 import { Store } from '@ngrx/store';
 import { Router } from '@angular/router';
 import { SnackbarnotifyService } from '../../../core/services/snackbarnotify/snackbarnotify.service';
-import { InputComponent } from "../../../components/common/input.component";
+import { InputComponent } from "../../../components/common/input/input.component";
 @Component({
   selector: 'app-login',
   imports: [CommonModule, ReactiveFormsModule, MatFormFieldModule, MatInputModule, MatSelectModule, MatButtonModule, MatProgressSpinnerModule, InputComponent],

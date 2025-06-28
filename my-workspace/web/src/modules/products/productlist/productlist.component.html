@@ -11,4 +11,20 @@ class="col-sm-3"
  [CustomErrorMessage]="'Please enter a valid email address'"
 (ValueChange)="onEmailChange($event)"
  />
+
+<form [formGroup]="form">
+  <app-dropdown
+    [Options]="countries"
+    [FormControl]="form.controls.country"
+    [Placeholder]="'Country'"
+    [LabelKey]="'name'"
+    [ValueKey]="'code'"
+    [CustomErrorMessage]="''"
+    (ValueChange)="onCountryChange($event)"
+  ></app-dropdown>
+</form>
+
+
+
+
 </form>
