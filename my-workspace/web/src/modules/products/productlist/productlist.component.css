@@ -1,0 +1,14 @@
+.countryIcon {
+    border-radius: 5px;
+    font-size: 0;
+    position: relative;
+    top: 1px;
+
+    &::after {
+        content: '';
+        position: absolute;
+        inset: 0;
+        border: 2px solid transparent;
+        border-radius: inherit;
+    }
+}

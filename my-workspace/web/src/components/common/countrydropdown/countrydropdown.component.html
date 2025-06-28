@@ -6,7 +6,12 @@
     [disabled]="Disabled()"
   >
     <mat-option *ngFor="let item of Options()" [value]="item[ValueKey()]">
-    {{ item[LabelKey()] }}
+     <div class="countryIcon">
+<span [ngClass]=getCountry(item)></span>
+
+
+
+</div>  {{ item[LabelKey()] }}
     </mat-option>
   </mat-select>
 

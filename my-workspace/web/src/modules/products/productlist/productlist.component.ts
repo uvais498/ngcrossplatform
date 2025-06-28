@@ -3,10 +3,11 @@ import { CommonModule } from '@angular/common';
 import { InputComponent } from "../../../components/common/input/input.component";
 import { FormBuilder, FormControl, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { DropdownComponent } from "../../../components/common/dropdown/dropdown.component";
+import { CountrydropdownComponent } from "../../../components/common/countrydropdown/countrydropdown.component";
 
 @Component({
   selector: 'app-productlist',
-  imports: [CommonModule, InputComponent, FormsModule, ReactiveFormsModule, DropdownComponent],
+  imports: [CommonModule, InputComponent, FormsModule, ReactiveFormsModule, DropdownComponent, CountrydropdownComponent],
   templateUrl: './productlist.component.html',
   styleUrl: './productlist.component.css',
 })

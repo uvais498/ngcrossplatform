@@ -1,4 +1,4 @@
-import { Component, computed, effect, input, output, signal } from '@angular/core';
+import { Component, computed, effect, input, output } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormControl, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatFormFieldModule } from '@angular/material/form-field';
@@ -6,13 +6,12 @@ import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
 
 @Component({
-  selector: 'app-dropdown',
+  selector: 'app-countrydropdown',
   imports: [CommonModule,FormsModule,ReactiveFormsModule,MatFormFieldModule,MatInputModule,MatSelectModule],
-  templateUrl: './dropdown.component.html',
-  styleUrl: './dropdown.component.css',
+  templateUrl: './countrydropdown.component.html',
+  styleUrl: './countrydropdown.component.css',
 })
-export class DropdownComponent<T> {
-  
+export class CountrydropdownComponent<T> {
   LabelName = input<string | undefined>(undefined);
   Placeholder = input<string>('Select...');
   Options = input<T[]>([]);
@@ -47,4 +46,8 @@ export class DropdownComponent<T> {
     });
   }
 
+  getCountry(item : any){
+      console.log(item)
+      return `fflag fflag-${item.code}`
+  }
 }

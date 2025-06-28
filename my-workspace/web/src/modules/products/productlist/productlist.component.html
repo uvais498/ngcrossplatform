@@ -1,5 +1,12 @@
 <p>productlist works!</p>
 
+<div class="countryIcon">
+<span
+                          class='fflag fflag-IN'
+                        ></span>
+
+</div>
+ 
 <form [formGroup]="form" class="row">
 
 <app-input 
@@ -13,7 +20,7 @@ class="col-sm-3"
  />
 
 <form [formGroup]="form">
-  <app-dropdown
+  <app-countrydropdown
     [Options]="countries"
     [FormControl]="form.controls.country"
     [Placeholder]="'Country'"
@@ -21,7 +28,7 @@ class="col-sm-3"
     [ValueKey]="'code'"
     [CustomErrorMessage]="''"
     (ValueChange)="onCountryChange($event)"
-  ></app-dropdown>
+  ></app-countrydropdown>
 </form>
 
 
